@@ -1,0 +1,208 @@
+/* ─── Reset & Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0d1117;
+  --surface:    #161b22;
+  --surface-2:  #21262d;
+  --border:     #30363d;
+  --text:       #e6edf3;
+  --muted:      #8b949e;
+  --accent:     #58a6ff;
+  --accent-2:   #bc8cff;
+  --green:      #3fb950;
+  --red:        #f85149;
+  --radius:     12px;
+  --font:       -apple-system, "Segoe UI", system-ui, sans-serif;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Topbar ────────────────────────────────────────────────────── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px;
+}
+
+.topbar-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 17px; letter-spacing: -.3px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.topbar-brand .logo-dot {
+  width: 26px; height: 26px;
+  background: var(--accent);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.topbar-brand .logo-dot svg { display: block; }
+
+.topbar-nav { display: flex; align-items: center; gap: 6px; }
+
+.topbar-nav a {
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  transition: background .15s, color .15s;
+  text-decoration: none;
+}
+.topbar-nav a:hover { background: var(--surface-2); color: var(--text); }
+.topbar-nav a.active { color: var(--text); background: var(--surface-2); }
+
+.topbar-cta {
+  padding: 6px 18px;
+  background: var(--accent);
+  color: #0d1117 !important;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity .15s;
+  text-decoration: none !important;
+}
+.topbar-cta:hover { opacity: .85; text-decoration: none !important; }
+
+/* ─── Page wrapper ──────────────────────────────────────────────── */
+.page { padding-top: 56px; min-height: 100vh; }
+
+/* ─── Hero ──────────────────────────────────────────────────────── */
+.hero {
+  max-width: 760px; margin: 0 auto;
+  padding: 90px 28px 60px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 4px 14px;
+  font-size: 12.5px; color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.hero-badge span.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+  margin-bottom: 20px;
+}
+
+.hero h1 em { font-style: normal; color: var(--accent); }
+
+.hero p {
+  font-size: 17px; color: var(--muted);
+  max-width: 520px; margin: 0 auto 38px;
+}
+
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 26px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: opacity .15s, transform .1s;
+  border: none;
+}
+.btn:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
+.btn-primary { background: var(--accent); color: #0d1117; }
+.btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+
+/* ─── Cards grid ────────────────────────────────────────────────── */
+.section { max-width: 900px; margin: 0 auto; padding: 0 28px 80px; }
+.section-title {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: var(--text);
+  transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.card h3 { font-size: 15px; font-weight: 700; }
+.card p  { font-size: 13.5px; color: var(--muted); flex: 1; }
+.card-arrow { font-size: 18px; color: var(--muted); align-self: flex-end; }
+
+/* ─── Chat page ─────────────────────────────────────────────────── */
+.chat-page {
+  display: flex; flex-direction: column;
+  height: 100vh; padding-top: 56px;
+}
+
+#chat-embed-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background: var(--bg);
+}
+
+#root { width: 100%; height: 100%; }
+
+/* ─── About ─────────────────────────────────────────────────────── */
+.about-content { max-width: 700px; margin: 0 auto; padding: 60px 28px 100px; }
+.about-content h2 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+.about-content h3 { font-size: 17px; font-weight: 600; margin: 32px 0 10px; color: var(--accent); }
+.about-content p  { color: var(--muted); margin-bottom: 12px; }
+
+.about-content ul {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 24px;
+}
+.about-content ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+.about-content ul li { color: var(--muted); }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.tag {
+  padding: 3px 12px; border-radius: 99px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  font-size: 12.5px; color: var(--muted);
+}
+
+/* ─── Footer ────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 28px;
+  text-align: center;
+  font-size: 12px; color: var(--muted);
+}
